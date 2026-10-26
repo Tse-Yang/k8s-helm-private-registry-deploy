@@ -68,15 +68,14 @@ cat .docker/config.json
 minikube cp minikube:/home/docker/.docker/config.json ./config.json
 ```
 
-> **Warning:** Do not copy it to `~/.docker/config.json`. That overwrites your host's Docker config. Keep it in the project folder and add it to `.gitignore`, since it contains credentials.
+![Copy config and base64 encode](images/cp-from-minikube.png)
+
 
 If you want to write the Secret as YAML, base64-encode the file:
 
 ```bash
 cat config.json | base64
 ```
-
-![Copy config and base64 encode](images/cp-from-minikube.png)
 
 ### 4. Create the Docker registry Secret
 
@@ -171,14 +170,3 @@ The **Events** section shows `Pulling image` followed by `Successfully pulled im
 
 ![Image pulled successfully](images/image-pull.png)
 
-## Troubleshooting
-
-| Symptom | Likely cause |
-|---|---|
-| `ImagePullBackOff` / `ErrImagePull` | Token expired (12h), wrong Secret name, or Secret in a different namespace than the Deployment |
-| `no basic auth credentials` | The Secret contains the host's config (empty `auths`) instead of Minikube's |
-
-## Security Notes
-
-- Never commit `config.json`, its base64 output, or ECR tokens to Git.
-- Blur or crop account IDs and tokens in screenshots before publishing.
