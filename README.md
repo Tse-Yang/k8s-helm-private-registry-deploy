@@ -23,7 +23,6 @@ The image (`my-app`) was pushed to ECR in a previous project: [aws-ecr-docker-pu
 
 ![ECR Repository](images/ECR-repository.png)
 
-> Replace `<AWS_ACCOUNT_ID>` and `<TAG>` in all commands with your own values.
 
 ## Steps
 
