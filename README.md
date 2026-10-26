@@ -21,7 +21,7 @@ The image (`my-app`) was pushed to ECR in a previous project: [aws-ecr-docker-pu
 - AWS CLI configured with access to your AWS account
 - A private ECR repository containing an image (here: `my-app`, region `eu-central-2`)
 
-![ECR private repository](images/01-ecr-repository.png)
+![ECR private repository](images/ecr-repository.png)
 
 > Replace `<AWS_ACCOUNT_ID>` and `<TAG>` in all commands with your own values.
 
