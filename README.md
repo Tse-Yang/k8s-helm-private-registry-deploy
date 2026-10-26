@@ -38,7 +38,7 @@ aws ecr get-login-password --region eu-central-2 | \
 
 Docker stores the result in `~/.docker/config.json`. On the host this file only has empty entries, because the credentials live in the OS credential store (`credsStore: desktop`). Minikube runs in its own VM/container and **cannot access that store**, so the host's config is of no use to the cluster. You have to log in from inside Minikube instead.
 
-![Host docker config.json](images/host-docker-config.png)
+![Host docker config.json](images/dot-docker.png)
 
 ### 2. Log in to the registry from inside Minikube
 
@@ -58,7 +58,7 @@ ls -a
 cat .docker/config.json
 ```
 
-![Docker login inside Minikube](images/03-minikube-docker-login.png)
+![Docker login inside Minikube](images/config-generated.png)
 
 > **Note:** ECR tokens are valid for **12 hours**. After that, repeat steps 1-4 to refresh the Secret, otherwise new pods fail with `ImagePullBackOff`.
 
@@ -76,7 +76,7 @@ If you want to write the Secret as YAML, base64-encode the file:
 cat config.json | base64
 ```
 
-![Copy config and base64 encode](images/04-copy-config-base64.png)
+![Copy config and base64 encode](images/cp-from-minikube.png)
 
 ### 4. Create the Docker registry Secret
 
@@ -121,7 +121,7 @@ Verify the Secret exists:
 kubectl get secret
 ```
 
-![Secret created](images/05-secret-created.png)
+![Secret created](images/secret-created.png)
 
 ### 5. Configure the Deployment
 
@@ -169,7 +169,7 @@ kubectl describe pod <pod-name>
 
 The **Events** section shows `Pulling image` followed by `Successfully pulled image`.
 
-![Image pulled successfully](images/07-image-pulled.png)
+![Image pulled successfully](images/image-pull.png)
 
 ## Troubleshooting
 
