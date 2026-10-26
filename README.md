@@ -22,7 +22,6 @@ The image (`my-app`) was pushed to ECR in a previous project: [aws-ecr-docker-pu
 - A private ECR repository containing an image (here: `my-app`, region `eu-central-2`)
 
 ![ECR Repository](images/ECR-repository.png)
-![ECR private repository](images/ecr-repository.png)
 
 > Replace `<AWS_ACCOUNT_ID>` and `<TAG>` in all commands with your own values.
 
@@ -39,7 +38,7 @@ aws ecr get-login-password --region eu-central-2 | \
 
 Docker stores the result in `~/.docker/config.json`. On the host this file only has empty entries, because the credentials live in the OS credential store (`credsStore: desktop`). Minikube runs in its own VM/container and **cannot access that store**, so the host's config is of no use to the cluster. You have to log in from inside Minikube instead.
 
-![Host docker config.json](images/02-host-docker-config.png)
+![Host docker config.json](images/host-docker-config.png)
 
 ### 2. Log in to the registry from inside Minikube
 
